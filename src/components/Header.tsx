@@ -19,67 +19,103 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-[#f5f1ea] backdrop-blur border-b border-[#e7e1d3]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href={base} className="flex items-center shrink-0" aria-label={`${dict.brand} ${dict.brandSuffix}`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt={`${dict.brand} ${dict.brandSuffix}`} className="h-7 w-auto" />
-        </Link>
+    <>
+      <header className="sticky top-0 z-40 border-b border-[#e7e1d3]" style={{ background: "#f5f0e8" }}>
+        <div className="max-w-[1400px] mx-auto px-5 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <Link href={base} className="flex items-center shrink-0" aria-label={`${dict.brand} ${dict.brandSuffix}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt={`${dict.brand} ${dict.brandSuffix}`} className="h-7 w-auto" />
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-[#b8976a] transition-colors text-[#1a1a1a]">
-              {l.label}
-            </Link>
-          ))}
-          <LanguageSwitcher locale={locale} />
-        </nav>
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {links.map((l) => (
+              <Link key={l.href} href={l.href} style={{ color: "#1a1a1a" }} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-[#b8976a] transition-colors">
+                {l.label}
+              </Link>
+            ))}
+            <LanguageSwitcher locale={locale} />
+          </nav>
 
-        {/* Mobile: Hamburger Button ganz rechts */}
-        <button
-          className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 focus:outline-none"
-          aria-label={open ? "Menü schließen" : "Menü öffnen"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className={`block w-6 h-[2px] bg-[#1a1a1a] transition-all duration-300 ${open ? "rotate-45 translate-y-[7px]" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[#1a1a1a] transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[#1a1a1a] transition-all duration-300 ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
-        </button>
-      </div>
-
-      {/* Mobile Menü Overlay */}
-      {open && (
-        <div className="fixed inset-0 z-50 bg-[#f5f1ea] flex flex-col items-center justify-center gap-6 lg:hidden">
-          {/* Schließen-Button oben rechts */}
+          {/* Mobile: Hamburger Button ganz rechts */}
           <button
-            className="absolute top-5 right-6 flex flex-col justify-center items-center gap-[5px] w-10 h-10"
-            aria-label="Menü schließen"
-            onClick={() => setOpen(false)}
+            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none gap-[5px]"
+            aria-label="Menü öffnen"
+            onClick={() => setOpen(true)}
           >
-            <span className="block w-6 h-[2px] bg-[#1a1a1a] rotate-45 translate-y-[7px]" />
-            <span className="block w-6 h-[2px] bg-[#1a1a1a] opacity-0" />
-            <span className="block w-6 h-[2px] bg-[#1a1a1a] -rotate-45 -translate-y-[7px]" />
+            <span style={{ display: "block", width: 24, height: 2, background: "#1a1a1a", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#1a1a1a", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#1a1a1a", borderRadius: 2 }} />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Fullscreen Overlay – außerhalb des <header> damit kein Clipping */}
+      {open && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9999,
+            background: "#f5f0e8",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 0,
+          }}
+        >
+          {/* Schließen */}
+          <button
+            onClick={() => setOpen(false)}
+            aria-label="Menü schließen"
+            style={{
+              position: "absolute",
+              top: 20,
+              right: 20,
+              fontSize: 28,
+              lineHeight: 1,
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#1a1a1a",
+              fontWeight: 300,
+            }}
+          >
+            ✕
           </button>
 
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="font-serif text-2xl uppercase tracking-[0.15em] text-[#1a1a1a] hover:text-[#b8976a] transition-colors py-1"
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {/* Links */}
+          <nav style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, marginBottom: 32 }}>
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  fontFamily: "Georgia, serif",
+                  fontSize: 22,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  color: "#1a1a1a",
+                  textDecoration: "none",
+                  padding: "10px 0",
+                  display: "block",
+                }}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
 
-          <div className="mt-4 flex flex-col items-center gap-2">
-            <span className="text-xs uppercase tracking-widest text-[#888]">Sprache</span>
+          {/* Sprache */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+            <span style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#888" }}>Sprache</span>
             <LanguageSwitcher locale={locale} />
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
