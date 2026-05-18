@@ -48,19 +48,21 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
       </div>
       {/* Mobile Menu Overlay */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-bone/95 flex flex-col items-center justify-center gap-8 text-2xl font-serif">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="uppercase tracking-[0.18em] hover:text-bronze transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </Link>
-          ))}
+        <div className="fixed inset-0 z-50 bg-bone/98 flex flex-col items-center justify-start pt-32 px-6 w-full h-full overflow-y-auto font-serif">
+          <nav className="flex flex-col w-full gap-6">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="uppercase tracking-[0.18em] hover:text-bronze transition-colors text-xl sm:text-2xl py-2 text-center"
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
           <button
-            className="mt-8 text-sm text-muted uppercase tracking-widest"
+            className="mt-10 text-sm text-muted uppercase tracking-widest border border-muted rounded px-4 py-2 hover:bg-muted/10 transition-colors"
             onClick={() => setOpen(false)}
           >
             Menü schließen
