@@ -32,6 +32,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* ── SERVICES ── hell mit goldenen Akzentlinien */}
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-32">
+        <div style={{ width: 48, height: 2, background: "#c4922a", marginBottom: 24 }} />
         <div className="eyebrow mb-3">{dict.home.services.eyebrow}</div>
         <h2 className="serif text-4xl md:text-5xl mb-16 max-w-2xl" style={{ color: "#1e100a" }}>{dict.home.services.title}</h2>
         <div className="divide-y" style={{ borderColor: "#c4922a33" }}>
@@ -55,35 +56,33 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* ── WHY ── dunkelbraune Sektion wie Logo-Hintergrund */}
-      <section style={{ background: "#2a1810" }} className="py-32">
+      {/* ── WHY + CONTACT CTA ── eine einzige durchgehende dunkle Sektion */}
+      <section style={{ background: "#2a1810" }} className="pt-32 pb-0">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div style={{ width: 48, height: 2, background: "#c4922a", marginBottom: 24 }} />
           <div className="eyebrow mb-3" style={{ color: "#c4922a" }}>{dict.home.why.eyebrow}</div>
           <h2 className="serif text-4xl md:text-5xl mb-20" style={{ color: "#faf3e8" }}>{dict.home.why.title}</h2>
-          <div className="grid md:grid-cols-3 gap-16">
+          <div className="grid md:grid-cols-3 gap-16 pb-32">
             {dict.home.why.items.map((it, i) => (
               <div key={i} className="border-t pt-8" style={{ borderColor: "#c4922a44" }}>
                 <div className="serif text-5xl mb-6" style={{ color: "#c4922a", opacity: 0.7 }}>0{i + 1}</div>
                 <div className="serif text-2xl mb-3" style={{ color: "#faf3e8" }}>{it.t}</div>
-                <p className="leading-relaxed" style={{ color: "#c9b89088" }}>{it.d}</p>
+                <p className="leading-relaxed" style={{ color: "#c9b89099" }}>{it.d}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* ── CONTACT CTA ── goldener Akzentstreifen */}
-      <section style={{ background: "#1c0f08" }} className="py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            {/* Gold-Akzentlinie oben */}
-            <div style={{ width: 48, height: 2, background: "#c4922a", marginBottom: 24 }} />
-            <div className="eyebrow mb-4" style={{ color: "#c4922a" }}>{dict.home.contact.eyebrow}</div>
-            <h2 className="serif text-4xl md:text-5xl" style={{ color: "#faf3e8" }}>{dict.home.contact.title}</h2>
-          </div>
-          <div>
-            <p className="leading-relaxed mb-10" style={{ color: "#c9b890bb" }}>{dict.home.contact.text}</p>
-            <Link href={`${base}/kontakt`} className="btn btn-light">{dict.cta.contact}</Link>
+        {/* Übergang in tieferes Braun */}
+        <div style={{ background: "#1c0f08" }} className="py-24">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="eyebrow mb-4" style={{ color: "#c4922a" }}>{dict.home.contact.eyebrow}</div>
+              <h2 className="serif text-4xl md:text-5xl" style={{ color: "#faf3e8" }}>{dict.home.contact.title}</h2>
+            </div>
+            <div>
+              <p className="leading-relaxed mb-10" style={{ color: "#c9b890bb" }}>{dict.home.contact.text}</p>
+              <Link href={`${base}/kontakt`} className="btn btn-light">{dict.cta.contact}</Link>
+            </div>
           </div>
         </div>
       </section>
