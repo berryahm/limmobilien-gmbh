@@ -134,9 +134,11 @@ const de = {
     intro: "L'Immobilien GmbH ist ein inhabergeführtes Immobilienbüro mit Sitz in Goldau. Wir verstehen uns als langfristige Begleiter unserer Kundinnen und Kunden, nicht als Vermittler von Transaktionen.",
     team: "Team",
     members: [
-      { name: "Vorname Nachname", role: "Geschäftsführung", bio: "Über 20 Jahre Erfahrung im Schweizer Immobilienmarkt." },
-      { name: "Vorname Nachname", role: "Vermarktung & Verkauf", bio: "Spezialistin für die Region Schwyz und Zugersee." },
-      { name: "Vorname Nachname", role: "Bewirtschaftung", bio: "Treuhand und STWE-Verwaltung mit Augenmass." },
+      {
+        name: "Qlirim Ademi",
+        role: "CEO",
+        bio: "qlirim.ademi@limmobilien-gmbh.ch\n077 214 66 55"
+      },
     ],
   },
   contact: {
