@@ -5,10 +5,11 @@
 @tailwind utilities;
 
 :root {
-  --bone: #faf3e8;
-  --ink: #1e100a;
+  --bone:   #faf3e8;
+  --ink:    #1e100a;
   --bronze: #c4922a;
-  --brown: #2a1810;
+  --gold:   #d4a843;
+  --brown:  #2a1810;
 }
 
 html, body {
@@ -28,40 +29,58 @@ h1, h2, h3, h4, .serif {
   letter-spacing: 0.005em;
 }
 
+/* Eyebrow – goldton auf hellen Flächen */
 .eyebrow {
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  font-weight: 400;
-  color: #8a7a6a;
+  font-weight: 500;
+  color: var(--bronze);
 }
 
+/* Gold-Trennlinie */
+.hairline { border-top: 1px solid #c4922a33; }
+
+/* Haupt-Button: Gold-Rahmen, transparent → Hover: Gold-Füllung dunkel */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.85rem 1.6rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
+  padding: 0.85rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  border: 1px solid currentColor;
+  font-weight: 500;
+  border: 1px solid var(--bronze);
+  color: var(--bronze);
+  background: transparent;
   transition: all 0.3s ease;
 }
-.btn:hover { background: var(--ink); color: var(--bone); }
-.btn-light { color: var(--bone); border-color: var(--bone); }
-.btn-light:hover { background: var(--bone); color: var(--ink); }
+.btn:hover {
+  background: var(--bronze);
+  color: var(--bone);
+}
 
-.hairline { border-top: 1px solid #d8c9a8; }
+/* Hell-Button für dunkle Sektionen: goldener Rahmen + Text → Hover: gold fill */
+.btn-light {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-light:hover {
+  background: var(--gold);
+  color: var(--brown);
+}
 
+/* Formulare */
 input, textarea, select {
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #c9b890;
+  border-bottom: 1px solid #c4922a55;
   padding: 0.6rem 0;
   width: 100%;
   font-size: 0.95rem;
   outline: none;
   transition: border-color 0.2s;
 }
-input:focus, textarea:focus, select:focus { border-bottom-color: var(--ink); }
-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8a7a6a; }
+input:focus, textarea:focus, select:focus { border-bottom-color: var(--bronze); }
+label { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--bronze); }
