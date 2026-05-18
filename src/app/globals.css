@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  --bone: #f7f4ee;
+  --ink: #1c1c1a;
+}
+
+html, body {
+  background: var(--bone);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, .serif {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #8a8579;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  transition: all 0.3s ease;
+}
+.btn:hover { background: var(--ink); color: var(--bone); }
+.btn-light { color: var(--bone); border-color: var(--bone); }
+.btn-light:hover { background: var(--bone); color: var(--ink); }
+
+.hairline { border-top: 1px solid #d8d2c4; }
+
+input, textarea, select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #c9c2b2;
+  padding: 0.6rem 0;
+  width: 100%;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus { border-bottom-color: var(--ink); }
+label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8a8579; }

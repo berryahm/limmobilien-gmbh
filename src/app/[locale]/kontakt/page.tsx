@@ -1,0 +1,40 @@
+import { loadLocale } from "@/lib/loadLocale";
+import ContactForm from "@/components/ContactForm";
+
+export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {
+  const { dict } = await loadLocale(params);
+  const info = dict.contact.info;
+  return (
+    <section className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-24 pb-32">
+      <div className="eyebrow mb-6">{dict.contact.eyebrow}</div>
+      <h1 className="serif text-5xl md:text-7xl mb-8 max-w-3xl">{dict.contact.title}</h1>
+      <p className="max-w-2xl text-muted leading-relaxed text-lg mb-20">{dict.contact.intro}</p>
+
+      <div className="grid lg:grid-cols-3 gap-16">
+        <div className="lg:col-span-2">
+          <ContactForm dict={dict} />
+        </div>
+        <aside className="space-y-10">
+          <div>
+            <div className="eyebrow mb-3">{info.address}</div>
+            {info.addressLines.map((l) => (
+              <div key={l} className="serif text-lg">{l}</div>
+            ))}
+          </div>
+          <div>
+            <div className="eyebrow mb-3">{info.phone}</div>
+            <div className="serif text-lg">{info.phoneValue}</div>
+          </div>
+          <div>
+            <div className="eyebrow mb-3">{info.email}</div>
+            <div className="serif text-lg">{info.emailValue}</div>
+          </div>
+          <div>
+            <div className="eyebrow mb-3">{info.hours}</div>
+            <div className="serif text-lg">{info.hoursValue}</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+}
