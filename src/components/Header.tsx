@@ -17,61 +17,67 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
     { href: `${base}/kontakt`, label: dict.nav.contact },
   ];
   const [open, setOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-40 bg-bone/85 backdrop-blur border-b border-[#e7e1d3]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-20 flex items-center">
-        <Link href={base} className="flex items-center" aria-label={`${dict.brand} ${dict.brandSuffix}`}> 
+    <header className="sticky top-0 z-40 bg-[#f5f1ea] backdrop-blur border-b border-[#e7e1d3]">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <Link href={base} className="flex items-center shrink-0" aria-label={`${dict.brand} ${dict.brandSuffix}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt={`${dict.brand} ${dict.brandSuffix}`} className="h-7 w-auto" />
         </Link>
+
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8 ml-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-bronze transition-colors">
+            <Link key={l.href} href={l.href} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-[#b8976a] transition-colors text-[#1a1a1a]">
               {l.label}
             </Link>
           ))}
-          <div className="ml-6">
-            <LanguageSwitcher locale={locale} />
-          </div>
+          <LanguageSwitcher locale={locale} />
         </nav>
-        <div className="flex-1 flex justify-end lg:hidden">
-          <button
-            className="flex items-center justify-center w-10 h-10 rounded focus:outline-none"
-            aria-label="Menü öffnen"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="block w-6 h-0.5 bg-ink mb-1" />
-            <span className="block w-6 h-0.5 bg-ink mb-1" />
-            <span className="block w-6 h-0.5 bg-ink" />
-          </button>
-        </div>
+
+        {/* Mobile: Hamburger Button ganz rechts */}
+        <button
+          className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 focus:outline-none"
+          aria-label={open ? "Menü schließen" : "Menü öffnen"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span className={`block w-6 h-[2px] bg-[#1a1a1a] transition-all duration-300 ${open ? "rotate-45 translate-y-[7px]" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[#1a1a1a] transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[#1a1a1a] transition-all duration-300 ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+        </button>
       </div>
-      {/* Mobile Menu Overlay */}
+
+      {/* Mobile Menü Overlay */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-bone/98 flex flex-col items-center justify-start pt-20 px-2 w-full h-full overflow-y-auto font-serif">
-          <nav className="flex flex-col w-full gap-3">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="uppercase tracking-[0.14em] hover:text-bronze transition-colors text-base py-2 text-center"
-                onClick={() => setOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="w-full flex flex-col items-center mt-6">
-            <div className="mb-2 text-xs text-muted uppercase tracking-widest">Sprache wählen</div>
-            <LanguageSwitcher locale={locale} />
-          </div>
+        <div className="fixed inset-0 z-50 bg-[#f5f1ea] flex flex-col items-center justify-center gap-6 lg:hidden">
+          {/* Schließen-Button oben rechts */}
           <button
-            className="mt-6 text-xs text-muted uppercase tracking-widest border border-muted rounded px-3 py-1 hover:bg-muted/10 transition-colors"
+            className="absolute top-5 right-6 flex flex-col justify-center items-center gap-[5px] w-10 h-10"
+            aria-label="Menü schließen"
             onClick={() => setOpen(false)}
           >
-            Menü schließen
+            <span className="block w-6 h-[2px] bg-[#1a1a1a] rotate-45 translate-y-[7px]" />
+            <span className="block w-6 h-[2px] bg-[#1a1a1a] opacity-0" />
+            <span className="block w-6 h-[2px] bg-[#1a1a1a] -rotate-45 -translate-y-[7px]" />
           </button>
+
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="font-serif text-2xl uppercase tracking-[0.15em] text-[#1a1a1a] hover:text-[#b8976a] transition-colors py-1"
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+
+          <div className="mt-4 flex flex-col items-center gap-2">
+            <span className="text-xs uppercase tracking-widest text-[#888]">Sprache</span>
+            <LanguageSwitcher locale={locale} />
+          </div>
         </div>
       )}
     </header>
