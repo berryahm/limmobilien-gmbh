@@ -24,7 +24,7 @@ export default async function Sell({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      <section style={{ background: "#1c0f08" }} className="py-24">
+      <section style={{ background: "#2a1810" }} className="py-24">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-wrap gap-4 items-center justify-between">
           <div className="serif text-3xl md:text-4xl" style={{ color: "#faf3e8" }}>{dict.sell.title}</div>
           <Link href={`/${locale}/bewertung`} className="btn btn-light">{dict.sell.cta}</Link>

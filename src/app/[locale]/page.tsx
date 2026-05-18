@@ -56,13 +56,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* ── WHY + CONTACT CTA ── eine einzige durchgehende dunkle Sektion */}
-      <section style={{ background: "#2a1810" }} className="pt-32 pb-0">
+      {/* ── WHY + CONTACT CTA ── eine einzige durchgehende dunkle Sektion in Logo-Braun */}
+      <section style={{ background: "#2a1810" }} className="pt-32">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div style={{ width: 48, height: 2, background: "#c4922a", marginBottom: 24 }} />
           <div className="eyebrow mb-3" style={{ color: "#c4922a" }}>{dict.home.why.eyebrow}</div>
           <h2 className="serif text-4xl md:text-5xl mb-20" style={{ color: "#faf3e8" }}>{dict.home.why.title}</h2>
-          <div className="grid md:grid-cols-3 gap-16 pb-32">
+          <div className="grid md:grid-cols-3 gap-16">
             {dict.home.why.items.map((it, i) => (
               <div key={i} className="border-t pt-8" style={{ borderColor: "#c4922a44" }}>
                 <div className="serif text-5xl mb-6" style={{ color: "#c4922a", opacity: 0.7 }}>0{i + 1}</div>
@@ -71,10 +71,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </div>
             ))}
           </div>
-        </div>
-        {/* Übergang in tieferes Braun */}
-        <div style={{ background: "#1c0f08" }} className="py-24">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid md:grid-cols-2 gap-12 items-center">
+          {/* feine Gold-Trennlinie zwischen Why und CTA */}
+          <div className="mt-32 mb-20" style={{ height: 1, background: "#c4922a22" }} />
+          <div className="grid md:grid-cols-2 gap-12 items-center pb-32">
             <div>
               <div className="eyebrow mb-4" style={{ color: "#c4922a" }}>{dict.home.contact.eyebrow}</div>
               <h2 className="serif text-4xl md:text-5xl" style={{ color: "#faf3e8" }}>{dict.home.contact.title}</h2>
