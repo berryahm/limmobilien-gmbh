@@ -20,7 +20,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-[#e7e1d3]" style={{ background: "#f5f0e8" }}>
+      <header className="sticky top-0 z-40 border-b border-[#d8c9a8]" style={{ background: "#faf3e8" }}>
         <div className="max-w-[1400px] mx-auto px-5 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href={base} className="flex items-center shrink-0" aria-label={`${dict.brand} ${dict.brandSuffix}`}>
@@ -58,7 +58,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             position: "fixed",
             inset: 0,
             zIndex: 9999,
-            background: "#f5f0e8",
+            background: "#faf3e8",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

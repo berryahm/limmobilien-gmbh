@@ -4,12 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#1c1c1a",
-        bone: "#f7f4ee",
-        sand: "#ebe5d8",
-        moss: "#3a4a3c",
-        bronze: "#9c7c4a",
-        muted: "#8a8579",
+        ink: "#1e100a",
+        bone: "#faf3e8",
+        sand: "#f0e6d0",
+        brown: "#2a1810",
+        bronze: "#c4922a",
+        gold: "#d4a843",
+        muted: "#8a7a6a",
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', "Georgia", "serif"],

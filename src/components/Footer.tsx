@@ -5,7 +5,7 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
   const year = new Date().getFullYear();
   const base = `/${locale}`;
   return (
-    <footer className="bg-ink text-bone mt-32">
+    <footer className="bg-brown text-bone mt-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 grid md:grid-cols-4 gap-12">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
