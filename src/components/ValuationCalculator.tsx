@@ -9,6 +9,89 @@ const CANTONS: CantonCode[] = [
   "AR","AI","SG","GR","AG","TG","TI","VD","VS","NE","GE","JU",
 ];
 
+function zipToCanton(zip: string): CantonCode | null {
+  const n = parseInt(zip, 10);
+  if (isNaN(n) || zip.length < 4) return null;
+
+  // Spezifische Ranges vor den breiten Ranges prüfen (Reihenfolge wichtig!)
+  if (n >= 6060 && n <= 6078) return "OW";          // Obwalden (liegt in LU-Bereich)
+  if (n >= 6370 && n <= 6388) return "NW";          // Nidwalden
+  if (n >= 6300 && n <= 6345) return "ZG";          // Zug
+  if (n >= 6460 && n <= 6493) return "UR";          // Uri
+  if (n >= 6402 && n <= 6443) return "SZ";          // Schwyz (6410 = Goldau)
+  if (n >= 8840 && n <= 8858) return "SZ";          // Schwyz (Küssnacht)
+  if (n >= 8862 && n <= 8872) return "SZ";          // Schwyz (Lachen)
+  if (n >= 8750 && n <= 8784) return "GL";          // Glarus
+  if (n >= 8874 && n <= 8890) return "GL";          // Glarus Nord
+  if (n >= 8200 && n <= 8262) return "SH";          // Schaffhausen
+  if (n >= 8263 && n <= 8280) return "TG";          // Thurgau West
+  if (n >= 8500 && n <= 8598) return "TG";          // Thurgau
+  if (n >= 9050 && n <= 9058) return "AI";          // Appenzell Innerrhoden (vor AR)
+  if (n === 9108)              return "AI";
+  if (n >= 9042 && n <= 9057) return "AR";          // Appenzell Ausserrhoden
+  if (n >= 9100 && n <= 9112) return "AR";
+  if (n >= 7310 && n <= 7320) return "SG";          // Bad Ragaz
+  if (n >= 8730 && n <= 8739) return "SG";          // Uznach / Rapperswil-Jona
+  if (n >= 9000 && n <= 9041) return "SG";
+  if (n >= 9200 && n <= 9403) return "SG";
+  if (n >= 9422 && n <= 9499) return "SG";
+  if (n >= 9500 && n <= 9631) return "SG";
+  if (n >= 4000 && n <= 4056) return "BS";          // Basel-Stadt
+  if (n >= 4125 && n <= 4127) return "BS";
+  if (n >= 4102 && n <= 4153) return "BL";          // Basel-Landschaft
+  if (n >= 4203 && n <= 4246) return "BL";
+  if (n >= 4500 && n <= 4535) return "SO";          // Solothurn
+  if (n >= 4556 && n <= 4577) return "SO";
+  if (n >= 4600 && n <= 4629) return "SO";
+  if (n >= 4700 && n <= 4716) return "SO";
+  if (n >= 4300 && n <= 4335) return "AG";          // Aargau
+  if (n >= 4800 && n <= 4853) return "AG";
+  if (n >= 4900 && n <= 4932) return "AG";
+  if (n >= 5000 && n <= 5736) return "AG";
+  if (n >= 8952 && n <= 8967) return "AG";
+  if (n >= 6000 && n <= 6299) return "LU";          // Luzern
+  if (n >= 6500 && n <= 6999) return "TI";          // Tessin
+  if (n >= 7000 && n <= 7499) return "GR";          // Graubünden
+  if (n >= 7502 && n <= 7999) return "GR";
+  if (n >= 1484 && n <= 1489) return "FR";          // Freiburg (vor VD)
+  if (n >= 1565 && n <= 1567) return "FR";
+  if (n >= 1583 && n <= 1586) return "FR";
+  if (n >= 1630 && n <= 1648) return "FR";
+  if (n >= 1670 && n <= 1699) return "FR";
+  if (n >= 1700 && n <= 1799) return "FR";
+  if (n >= 1200 && n <= 1259) return "GE";          // Genf
+  if (n >= 1281 && n <= 1285) return "GE";
+  if (n >= 1870 && n <= 1873) return "VS";          // Wallis
+  if (n >= 1880 && n <= 1884) return "VS";
+  if (n >= 1890 && n <= 1998) return "VS";
+  if (n >= 3900 && n <= 3998) return "VS";          // Oberwallis
+  if (n >= 1000 && n <= 1098) return "VD";          // Waadt
+  if (n >= 1110 && n <= 1483) return "VD";
+  if (n >= 1510 && n <= 1564) return "VD";
+  if (n >= 1580 && n <= 1582) return "VD";
+  if (n >= 1787 && n <= 1789) return "VD";
+  if (n >= 1800 && n <= 1869) return "VD";
+  if (n >= 2350 && n <= 2360) return "JU";          // Jura
+  if (n >= 2400 && n <= 2416) return "JU";
+  if (n >= 2800 && n <= 2854) return "JU";
+  if (n >= 2900 && n <= 2953) return "JU";
+  if (n >= 2000 && n <= 2149) return "NE";          // Neuenburg
+  if (n >= 2200 && n <= 2209) return "NE";
+  if (n >= 2300 && n <= 2345) return "NE";
+  if (n >= 2520 && n <= 2525) return "NE";
+  if (n >= 2500 && n <= 2577) return "BE";          // Bern (Biel + Umgebung)
+  if (n >= 2603 && n <= 2615) return "BE";
+  if (n >= 2720 && n <= 2745) return "BE";
+  if (n >= 3000 && n <= 3899) return "BE";          // Bern (breit)
+  if (n >= 8000 && n <= 8199) return "ZH";          // Zürich
+  if (n >= 8303 && n <= 8499) return "ZH";
+  if (n >= 8600 && n <= 8729) return "ZH";
+  if (n >= 8800 && n <= 8839) return "ZH";
+  if (n >= 8880 && n <= 8999) return "ZH";
+
+  return null;
+}
+
 export default function ValuationCalculator({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [type, setType] = useState<"apartment" | "house">("apartment");
   const [area, setArea] = useState<number>(120);
@@ -18,6 +101,23 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
   const [microLocation, setMicroLocation] = useState<"prime" | "good" | "standard">("good");
   const [canton, setCanton] = useState<CantonCode>("SZ");
   const [zip, setZip] = useState<string>("6410");
+  const [cantonAuto, setCantonAuto] = useState<boolean>(true);
+
+  const handleZipChange = (value: string) => {
+    setZip(value);
+    const detected = zipToCanton(value);
+    if (detected) {
+      setCanton(detected);
+      setCantonAuto(true);
+    } else {
+      setCantonAuto(false);
+    }
+  };
+
+  const handleCantonChange = (value: CantonCode) => {
+    setCanton(value);
+    setCantonAuto(false);
+  };
   const [result, setResult] = useState<ValuationResult | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -53,14 +153,17 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
           </select>
         </div>
         <div>
-          <label className="block mb-2">{f.canton}</label>
-          <select value={canton} onChange={(e) => setCanton(e.target.value as CantonCode)}>
-            {CANTONS.map((c) => <option key={c} value={c}>{c}</option>)}
-          </select>
+          <label className="block mb-2">{f.zip}</label>
+          <input type="text" inputMode="numeric" maxLength={4} value={zip} onChange={(e) => handleZipChange(e.target.value)} />
         </div>
         <div>
-          <label className="block mb-2">{f.zip}</label>
-          <input type="text" inputMode="numeric" maxLength={4} value={zip} onChange={(e) => setZip(e.target.value)} />
+          <label className="block mb-2" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span>{f.canton}</span>
+            {cantonAuto && <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#c4922a", textTransform: "uppercase" }}>✓ erkannt</span>}
+          </label>
+          <select value={canton} onChange={(e) => handleCantonChange(e.target.value as CantonCode)}>
+            {CANTONS.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
         </div>
         <div>
           <label className="block mb-2">{f.area}</label>
