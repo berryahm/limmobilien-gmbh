@@ -20,18 +20,18 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-[#d8c9a8]" style={{ background: "#faf3e8" }}>
-        <div className="max-w-[1400px] mx-auto px-5 h-16 flex items-center justify-between">
+      <header className="sticky top-0 z-40" style={{ background: "#3a170b", borderBottom: "1px solid rgba(196,158,87,0.2)" }}>
+        <div className="max-w-[1400px] mx-auto px-5 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href={base} className="flex items-center shrink-0" aria-label={`${dict.brand} ${dict.brandSuffix}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt={`${dict.brand} ${dict.brandSuffix}`} className="h-7 w-auto" />
+            <img src="/logo.png" alt={`${dict.brand} ${dict.brandSuffix}`} className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {links.map((l) => (
-              <Link key={l.href} href={l.href} style={{ color: "#3a170b" }} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-[#c49e57] transition-colors">
+              <Link key={l.href} href={l.href} style={{ color: "#faf3e8" }} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-[#c49e57] transition-colors">
                 {l.label}
               </Link>
             ))}
@@ -44,9 +44,9 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             aria-label="Menü öffnen"
             onClick={() => setOpen(true)}
           >
-            <span style={{ display: "block", width: 24, height: 2, background: "#3a170b", borderRadius: 2 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: "#3a170b", borderRadius: 2 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: "#3a170b", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#c49e57", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#c49e57", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#c49e57", borderRadius: 2 }} />
           </button>
         </div>
       </header>
@@ -58,7 +58,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             position: "fixed",
             inset: 0,
             zIndex: 9999,
-            background: "#faf3e8",
+            background: "#3a170b",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -79,7 +79,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
               background: "none",
               border: "none",
               cursor: "pointer",
-              color: "#3a170b",
+              color: "#c49e57",
               fontWeight: 300,
             }}
           >
@@ -98,7 +98,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
                   fontSize: 22,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
-                  color: "#3a170b",
+                  color: "#faf3e8",
                   textDecoration: "none",
                   padding: "10px 0",
                   display: "block",
@@ -111,7 +111,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
 
           {/* Sprache */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-            <span style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#888" }}>Sprache</span>
+            <span style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#c49e57" }}>Sprache</span>
             <LanguageSwitcher locale={locale} />
           </div>
         </div>

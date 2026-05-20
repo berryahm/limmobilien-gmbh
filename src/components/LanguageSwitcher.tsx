@@ -20,10 +20,11 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
     <div className="flex items-center gap-1 text-[0.7rem] tracking-[0.2em] uppercase">
       {locales.map((l, i) => (
         <span key={l} className="flex items-center">
-          {i > 0 && <span className="mx-1.5 text-muted">·</span>}
+          {i > 0 && <span className="mx-1.5" style={{ color: "#c49e5766" }}>·</span>}
           <button
             onClick={() => switchTo(l)}
-            className={l === locale ? "text-ink font-medium" : "text-muted hover:text-ink transition-colors"}
+            style={{ color: l === locale ? "#c49e57" : "#faf3e899" }}
+            className="hover:!text-[#c49e57] transition-colors"
             aria-current={l === locale}
           >
             {l}
