@@ -62,7 +62,7 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
           {status === "loading" ? "…" : dict.cta.send}
         </button>
         {status === "error" && (
-          <span className="text-sm" style={{ color: "#c4922a" }}>Versand fehlgeschlagen. Bitte versuchen Sie es erneut.</span>
+          <span className="text-sm" style={{ color: "#c49e57" }}>Versand fehlgeschlagen. Bitte versuchen Sie es erneut.</span>
         )}
       </div>
     </form>

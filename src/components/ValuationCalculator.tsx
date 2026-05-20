@@ -159,7 +159,7 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
         <div>
           <label className="block mb-2" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span>{f.canton}</span>
-            {cantonAuto && <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#c4922a", textTransform: "uppercase" }}>✓ erkannt</span>}
+            {cantonAuto && <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#c49e57", textTransform: "uppercase" }}>✓ erkannt</span>}
           </label>
           <select value={canton} onChange={(e) => handleCantonChange(e.target.value as CantonCode)}>
             {CANTONS.map((c) => <option key={c} value={c}>{c}</option>)}

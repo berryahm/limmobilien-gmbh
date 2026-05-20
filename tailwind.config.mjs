@@ -4,14 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink:    "#1e100a",   // Tiefstes Dunkelbraun (Text)
-        bone:   "#faf3e8",   // Warmes Creme (Hintergrund hell)
-        sand:   "#f0e6d0",   // Goldener Sand (Sektionshintergrund)
-        brown:  "#2a1810",   // Logo-Dunkelbraun (dunkle Sektionen)
-        deep:   "#1c0f08",   // Tiefstes Braun (Footer, CTA)
-        bronze: "#c4922a",   // Hauptgold (Akzente, Buttons, Hover)
-        gold:   "#d4a843",   // Helles Gold (Überschriften auf Dunkel)
-        muted:  "#8a7a6a",   // Warmes Grau (Sekundärtext)
+        // Logo-Palette: nur 3 Farben + Creme
+        bone:   "#faf3e8",   // Creme – Hintergrund hell
+        brown:  "#3a170b",   // Logo-Dunkelbraun – Text + dunkle Sektionen
+        cocoa:  "#714928",   // Logo-Mittelbraun – Sekundärtext, Hover-States
+        gold:   "#c49e57",   // Logo-Gold – Akzente, Linien, Buttons
+        // Aliase für Rückwärtskompatibilität (auf die 3 Logo-Farben gemappt)
+        ink:    "#3a170b",
+        sand:   "#faf3e8",
+        deep:   "#3a170b",
+        bronze: "#c49e57",
+        muted:  "#714928",
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', "Georgia", "serif"],

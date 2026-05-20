@@ -31,7 +31,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {links.map((l) => (
-              <Link key={l.href} href={l.href} style={{ color: "#1a1a1a" }} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-[#b8976a] transition-colors">
+              <Link key={l.href} href={l.href} style={{ color: "#3a170b" }} className="text-[0.78rem] tracking-[0.2em] uppercase hover:text-[#c49e57] transition-colors">
                 {l.label}
               </Link>
             ))}
@@ -44,9 +44,9 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             aria-label="Menü öffnen"
             onClick={() => setOpen(true)}
           >
-            <span style={{ display: "block", width: 24, height: 2, background: "#1a1a1a", borderRadius: 2 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: "#1a1a1a", borderRadius: 2 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: "#1a1a1a", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#3a170b", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#3a170b", borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "#3a170b", borderRadius: 2 }} />
           </button>
         </div>
       </header>
@@ -79,7 +79,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
               background: "none",
               border: "none",
               cursor: "pointer",
-              color: "#1a1a1a",
+              color: "#3a170b",
               fontWeight: 300,
             }}
           >
@@ -98,7 +98,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
                   fontSize: 22,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
-                  color: "#1a1a1a",
+                  color: "#3a170b",
                   textDecoration: "none",
                   padding: "10px 0",
                   display: "block",
