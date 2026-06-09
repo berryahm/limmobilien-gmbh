@@ -4,16 +4,16 @@ export default async function About({ params }: { params: Promise<{ locale: stri
   const { dict } = await loadLocale(params);
   return (
     <>
-      <section className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-28 pb-20">
+      <section className="max-w-[1400px] mx-auto px-8 lg:px-12 pt-28 pb-20">
         <div style={{ width: 48, height: 2, background: "#c49e57", marginBottom: 24 }} />
         <div className="eyebrow mb-6">{dict.about.eyebrow}</div>
-        <h1 className="serif text-5xl md:text-7xl max-w-4xl" style={{ color: "#3a170b" }}>{dict.about.title}</h1>
-        <p className="mt-10 max-w-3xl leading-relaxed text-lg" style={{ color: "#714928" }}>{dict.about.intro}</p>
+        <h1 className="serif text-5xl md:text-7xl max-w-4xl" style={{ color: "#2a1610" }}>{dict.about.title}</h1>
+        <p className="mt-10 max-w-3xl leading-relaxed text-lg" style={{ color: "#8a7363" }}>{dict.about.intro}</p>
       </section>
 
       {/* Dunkle Team-Sektion wie Logo-Hintergrund */}
-      <section style={{ background: "#3a170b" }} className="py-28">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col items-center">
+      <section style={{ background: "#2a1610" }} className="py-28">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-12 flex flex-col items-center">
           <div className="eyebrow mb-3" style={{ color: "#c49e57" }}>{dict.about.team}</div>
           <div className="serif text-3xl md:text-4xl mb-16" style={{ color: "#faf3e8" }}>Führung</div>
           <div className="w-full max-w-sm flex flex-col items-center">

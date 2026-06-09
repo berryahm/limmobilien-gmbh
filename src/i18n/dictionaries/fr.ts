@@ -11,6 +11,7 @@ const fr = {
     valuation: "Estimation",
     about: "À propos",
     contact: "Contact",
+    language: "Langue",
   },
   cta: {
     explore: "Découvrir les offres",
@@ -126,6 +127,18 @@ const fr = {
       sources: "Sources",
       disclaimer: "Cette estimation en ligne est une première indication et ne remplace pas une évaluation détaillée par un expert certifié. Nous vous contactons volontiers pour une appréciation approfondie.",
       cta: "Demander une estimation détaillée",
+    },
+    lead: {
+      title: "Demander une estimation détaillée",
+      intro: "Laissez-nous vos coordonnées – nous reviendrons vers vous personnellement avec une appréciation approfondie de votre bien.",
+      name: "Nom",
+      email: "E-mail",
+      phone: "Téléphone (facultatif)",
+      message: "Message (facultatif)",
+      submit: "Envoyer la demande",
+      sending: "Envoi …",
+      success: "Merci. Nous reviendrons vers vous personnellement sous peu.",
+      error: "Envoi échoué. Merci de réessayer plus tard ou de contacter info@limmobilien-gmbh.ch.",
     },
   },
   about: {

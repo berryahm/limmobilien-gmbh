@@ -11,6 +11,7 @@ const en = {
     valuation: "Valuation",
     about: "About",
     contact: "Contact",
+    language: "Language",
   },
   cta: {
     explore: "Explore listings",
@@ -126,6 +127,18 @@ const en = {
       sources: "Sources",
       disclaimer: "This online estimate is an initial indication and does not replace a detailed valuation by a certified appraiser. We will gladly contact you for a thorough assessment.",
       cta: "Request detailed valuation",
+    },
+    lead: {
+      title: "Request a detailed valuation",
+      intro: "Leave us your contact details and we will personally get back to you with a thorough assessment of your property.",
+      name: "Name",
+      email: "Email",
+      phone: "Phone (optional)",
+      message: "Message (optional)",
+      submit: "Send request",
+      sending: "Sending …",
+      success: "Thank you. We will get back to you personally shortly.",
+      error: "Submission failed. Please try again later or contact info@limmobilien-gmbh.ch directly.",
     },
   },
   about: {

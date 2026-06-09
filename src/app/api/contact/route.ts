@@ -28,8 +28,8 @@ export async function POST(req: Request) {
       replyTo: email,
       subject: subject ? `Anfrage: ${subject}` : `Neue Kontaktanfrage von ${name}`,
       html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #3a170b;">
-          <div style="background: #3a170b; padding: 24px 32px; margin-bottom: 0;">
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #2a1610;">
+          <div style="background: #2a1610; padding: 24px 32px; margin-bottom: 0;">
             <p style="color: #c49e57; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; margin: 0 0 8px;">L'Immobilien GmbH</p>
             <h2 style="color: #faf3e8; margin: 0; font-size: 22px;">Neue Kontaktanfrage</h2>
           </div>
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
               <p style="white-space: pre-wrap; line-height: 1.7; margin: 0;">${message}</p>
             </div>
           </div>
-          <div style="background: #3a170b; padding: 16px 32px; text-align: center;">
+          <div style="background: #2a1610; padding: 16px 32px; text-align: center;">
             <p style="color: #c49e57; font-size: 11px; margin: 0;">L'Immobilien GmbH · Im Blumenweg 10 · 6410 Goldau</p>
           </div>
         </div>

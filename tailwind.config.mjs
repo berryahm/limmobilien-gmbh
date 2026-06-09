@@ -4,17 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Logo-Palette: nur 3 Farben + Creme
+        // Logo-Palette: 3 Kernfarben + Creme
         bone:   "#faf3e8",   // Creme – Hintergrund hell
-        brown:  "#3a170b",   // Logo-Dunkelbraun – Text + dunkle Sektionen
-        cocoa:  "#714928",   // Logo-Mittelbraun – Sekundärtext, Hover-States
+        brown:  "#2a1610",   // Logo-Dunkelbraun (Espresso) – Text + dunkle Sektionen
+        cocoa:  "#8a7363",   // Abgeschwächtes Braun – Sekundärtext (gleiche Familie)
         gold:   "#c49e57",   // Logo-Gold – Akzente, Linien, Buttons
-        // Aliase für Rückwärtskompatibilität (auf die 3 Logo-Farben gemappt)
-        ink:    "#3a170b",
+        // Aliase für Rückwärtskompatibilität
+        ink:    "#2a1610",
         sand:   "#faf3e8",
-        deep:   "#3a170b",
+        deep:   "#2a1610",
         bronze: "#c49e57",
-        muted:  "#714928",
+        muted:  "#8a7363",
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', "Georgia", "serif"],

@@ -11,6 +11,7 @@ const it = {
     valuation: "Valutazione",
     about: "Chi siamo",
     contact: "Contatto",
+    language: "Lingua",
   },
   cta: {
     explore: "Scopri le offerte",
@@ -126,6 +127,18 @@ const it = {
       sources: "Fonti",
       disclaimer: "Questa stima online è una prima indicazione e non sostituisce una valutazione approfondita di un perito certificato. Vi contatteremo volentieri per una valutazione completa.",
       cta: "Richiedi valutazione dettagliata",
+    },
+    lead: {
+      title: "Richiedi una valutazione dettagliata",
+      intro: "Lasciateci i vostri dati di contatto – vi ricontatteremo personalmente con una valutazione approfondita del vostro immobile.",
+      name: "Nome",
+      email: "E-mail",
+      phone: "Telefono (opzionale)",
+      message: "Messaggio (opzionale)",
+      submit: "Invia richiesta",
+      sending: "Invio …",
+      success: "Grazie. La ricontatteremo personalmente a breve.",
+      error: "Invio non riuscito. Riprovare più tardi o contattare info@limmobilien-gmbh.ch.",
     },
   },
   about: {

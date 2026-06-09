@@ -7,84 +7,199 @@
 :root {
   /* Logo-Palette: 3 Farben + Creme */
   --bone:  #faf3e8;   /* Creme */
-  --brown: #3a170b;   /* Dunkelbraun */
-  --cocoa: #714928;   /* Mittelbraun */
+  --paper: #ffffff;   /* Reines Weiß für Karten/Flächen */
+  --brown: #2a1610;   /* Dunkelbraun (Espresso) */
+  --cocoa: #8a7363;   /* Abgeschwächtes Braun – Sekundärtext (gleiche Familie) */
   --gold:  #c49e57;   /* Gold */
+  --line:  rgba(42, 22, 16, 0.10);  /* Neutrale, ruhige Trennlinie */
   /* Aliase */
   --ink:    var(--brown);
   --bronze: var(--gold);
 }
 
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 html, body {
   background: var(--bone);
   color: var(--brown);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
 }
+
+::selection { background: var(--gold); color: var(--brown); }
 
 h1, h2, h3, h4, .serif {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: 400;
-  letter-spacing: 0.005em;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
-/* Eyebrow – Gold auf hellen Flächen */
+/* Leichtere, modernere Display-Headline */
+.display { font-weight: 300; letter-spacing: -0.01em; }
+
+/* Eyebrow – dezenter, modern */
 .eyebrow {
-  font-size: 0.68rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--gold);
-}
-
-/* Feine Gold-Trennlinie */
-.hairline { border-top: 1px solid rgba(196, 158, 87, 0.25); }
-
-/* Haupt-Button: Gold-Rahmen → Hover: Gold-Füllung mit Creme-Text */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 2rem;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   font-weight: 500;
-  border: 1px solid var(--gold);
   color: var(--gold);
+}
+
+/* Trennlinien */
+.hairline { border-top: 1px solid var(--line); }
+.hairline-gold { border-top: 1px solid rgba(196, 158, 87, 0.35); }
+
+/* Haupt-Button: minimalistisch, ruhiger Hover */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid var(--brown);
+  color: var(--brown);
   background: transparent;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
 }
 .btn:hover {
+  background: var(--brown);
+  color: var(--bone);
+}
+
+/* Primär gefüllt (Gold) – klare Call-to-Action */
+.btn-primary {
+  border-color: var(--gold);
   background: var(--gold);
   color: var(--brown);
 }
+.btn-primary:hover {
+  background: transparent;
+  color: var(--brown);
+  border-color: var(--brown);
+}
 
-/* Variante für dunkle Sektionen – identisch, aber explizit */
+/* Variante für dunkle Sektionen */
 .btn-light {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: rgba(196, 158, 87, 0.5);
+  color: var(--bone);
+  background: transparent;
 }
 .btn-light:hover {
   background: var(--gold);
   color: var(--brown);
+  border-color: var(--gold);
+}
+
+/* Minimalistische Karten */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  border-color: rgba(196, 158, 87, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Formulare */
 input, textarea, select {
   background: transparent;
   border: 0;
-  border-bottom: 1px solid rgba(196, 158, 87, 0.4);
-  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem 0;
   width: 100%;
   font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 300;
   outline: none;
   color: var(--brown);
-  transition: border-color 0.2s;
+  transition: border-color 0.25s ease;
 }
+input::placeholder, textarea::placeholder { color: rgba(42, 22, 16, 0.35); }
 input:focus, textarea:focus, select:focus { border-bottom-color: var(--gold); }
-label { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--cocoa);
+}
+
+/* Sanftes Einblenden */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hero: langsamer Ken-Burns-Zoom + sanftes Aufblenden */
+  .kenburns { animation: kenburns 18s ease-out both, heroFade 1.6s ease-out both; transform-origin: 50% 60%; }
+  @keyframes kenburns {
+    from { transform: scale(1.12); }
+    to   { transform: scale(0.96); }
+  }
+  @keyframes heroFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Reveal-on-Scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* Mobile Menu – fade-in + sanfte Link-Animation */
+.mobile-menu {
+  animation: menuFade 0.35s ease both;
+}
+.mobile-menu nav a {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: menuItemIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.mobile-menu nav a:nth-child(1) { animation-delay: 0.06s; }
+.mobile-menu nav a:nth-child(2) { animation-delay: 0.10s; }
+.mobile-menu nav a:nth-child(3) { animation-delay: 0.14s; }
+.mobile-menu nav a:nth-child(4) { animation-delay: 0.18s; }
+.mobile-menu nav a:nth-child(5) { animation-delay: 0.22s; }
+.mobile-menu nav a:nth-child(6) { animation-delay: 0.26s; }
+
+.mobile-menu-link:hover,
+.mobile-menu-link:active {
+  color: #c49e57 !important;
+  padding-left: 14px !important;
+}
+
+@keyframes menuFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes menuItemIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .mobile-menu nav a { animation: none; opacity: 1; transform: none; }
+}

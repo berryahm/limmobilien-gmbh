@@ -11,6 +11,7 @@ const de = {
     valuation: "Bewertung",
     about: "Über uns",
     contact: "Kontakt",
+    language: "Sprache",
   },
   cta: {
     explore: "Angebote entdecken",
@@ -126,6 +127,18 @@ const de = {
       sources: "Quellen",
       disclaimer: "Diese Online-Schätzung ist eine erste Indikation und ersetzt keine ausführliche Bewertung durch eine zertifizierte Schätzerin. Wir kontaktieren Sie gerne für eine fundierte Einschätzung.",
       cta: "Ausführliche Bewertung anfordern",
+    },
+    lead: {
+      title: "Ausführliche Bewertung anfordern",
+      intro: "Hinterlassen Sie uns Ihre Kontaktdaten – wir melden uns persönlich mit einer fundierten Einschätzung Ihrer Liegenschaft.",
+      name: "Name",
+      email: "E-Mail",
+      phone: "Telefon (optional)",
+      message: "Nachricht (optional)",
+      submit: "Anfrage senden",
+      sending: "Wird gesendet …",
+      success: "Vielen Dank. Wir melden uns in Kürze persönlich bei Ihnen.",
+      error: "Versand fehlgeschlagen. Bitte später erneut versuchen oder direkt info@limmobilien-gmbh.ch kontaktieren.",
     },
   },
   about: {

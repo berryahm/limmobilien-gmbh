@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { Dictionary, Locale } from "@/i18n";
 import type { CantonCode } from "@/lib/valuation/benchmarks";
 import type { ValuationResult } from "@/lib/valuation";
+import { plzToCanton, plzToOrt } from "@/data/plz";
 
 const CANTONS: CantonCode[] = [
   "ZH","BE","LU","UR","SZ","OW","NW","GL","ZG","FR","SO","BS","BL","SH",
@@ -10,6 +11,8 @@ const CANTONS: CantonCode[] = [
 ];
 
 function zipToCanton(zip: string): CantonCode | null {
+  if (zip.length === 4 && plzToCanton[zip]) return plzToCanton[zip];
+
   const n = parseInt(zip, 10);
   if (isNaN(n) || zip.length < 4) return null;
 
@@ -102,9 +105,11 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
   const [canton, setCanton] = useState<CantonCode>("SZ");
   const [zip, setZip] = useState<string>("6410");
   const [cantonAuto, setCantonAuto] = useState<boolean>(true);
+  const [ort, setOrt] = useState<string>(plzToOrt["6410"] ?? "");
 
   const handleZipChange = (value: string) => {
     setZip(value);
+    setOrt(value.length === 4 ? plzToOrt[value] ?? "" : "");
     const detected = zipToCanton(value);
     if (detected) {
       setCanton(detected);
@@ -121,8 +126,16 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
   const [result, setResult] = useState<ValuationResult | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // Lead-Formular State
+  const [leadName, setLeadName] = useState("");
+  const [leadEmail, setLeadEmail] = useState("");
+  const [leadPhone, setLeadPhone] = useState("");
+  const [leadMessage, setLeadMessage] = useState("");
+  const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
   const submit = async () => {
     setLoading(true);
+    setLeadStatus("idle");
     try {
       const res = await fetch("/api/valuation", {
         method: "POST",
@@ -136,6 +149,33 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
       setResult(data);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const submitLead = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!result) return;
+    setLeadStatus("sending");
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: leadName,
+          email: leadEmail,
+          phone: leadPhone || undefined,
+          message: leadMessage || undefined,
+          valuation: {
+            type, areaM2: area, rooms, yearBuilt: year,
+            condition, microLocation, canton, zip,
+          },
+          result,
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setLeadStatus("success");
+    } catch {
+      setLeadStatus("error");
     }
   };
 
@@ -155,6 +195,7 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
         <div>
           <label className="block mb-2">{f.zip}</label>
           <input type="text" inputMode="numeric" maxLength={4} value={zip} onChange={(e) => handleZipChange(e.target.value)} />
+          {ort && <div style={{ marginTop: 6, fontSize: "12px", color: "#8a7363" }}>{ort}</div>}
         </div>
         <div>
           <label className="block mb-2" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -233,7 +274,39 @@ export default function ValuationCalculator({ locale, dict }: { locale: Locale; 
             </div>
 
             <p className="mt-8 text-xs text-muted leading-relaxed">{dict.valuation.result.disclaimer}</p>
-            <a href={`/${locale}/kontakt`} className="btn mt-6">{dict.valuation.result.cta}</a>
+
+            <div className="mt-8 hairline pt-6">
+              <div className="eyebrow mb-3">{dict.valuation.lead.title}</div>
+              {leadStatus === "success" ? (
+                <p className="text-sm">{dict.valuation.lead.success}</p>
+              ) : (
+                <form onSubmit={submitLead} className="grid gap-4">
+                  <p className="text-xs text-muted leading-relaxed">{dict.valuation.lead.intro}</p>
+                  <div>
+                    <label className="block mb-2 text-xs">{dict.valuation.lead.name}</label>
+                    <input type="text" required value={leadName} onChange={(e) => setLeadName(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block mb-2 text-xs">{dict.valuation.lead.email}</label>
+                    <input type="email" required value={leadEmail} onChange={(e) => setLeadEmail(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block mb-2 text-xs">{dict.valuation.lead.phone}</label>
+                    <input type="tel" value={leadPhone} onChange={(e) => setLeadPhone(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block mb-2 text-xs">{dict.valuation.lead.message}</label>
+                    <textarea rows={3} value={leadMessage} onChange={(e) => setLeadMessage(e.target.value)} />
+                  </div>
+                  <button type="submit" disabled={leadStatus === "sending"} className="btn">
+                    {leadStatus === "sending" ? dict.valuation.lead.sending : dict.valuation.lead.submit}
+                  </button>
+                  {leadStatus === "error" && (
+                    <p className="text-xs" style={{ color: "#b00020" }}>{dict.valuation.lead.error}</p>
+                  )}
+                </form>
+              )}
+            </div>
           </div>
         )}
       </div>
