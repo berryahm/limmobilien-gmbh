@@ -169,7 +169,7 @@ const it = {
       address: "Indirizzo",
       addressLines: ["L'Immobilien GmbH", "Im Blumenweg 10", "6410 Goldau"],
       phone: "Telefono",
-      phoneValue: "077 214 66 55",
+      phoneValue: "079 404 09 99",
       email: "E-mail",
       emailValue: "info@limmobilien-gmbh.ch",
       hours: "Orari",

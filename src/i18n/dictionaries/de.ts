@@ -150,7 +150,7 @@ const de = {
       {
         name: "Qlirim Ademi",
         role: "CEO",
-        bio: "qlirim.ademi@limmobilien-gmbh.ch\n077 214 66 55"
+        bio: "qlirim.ademi@limmobilien-gmbh.ch\n079 404 09 99"
       },
     ],
   },
@@ -171,7 +171,7 @@ const de = {
       address: "Adresse",
       addressLines: ["L'Immobilien GmbH", "Im Blumenweg 10", "6410 Goldau"],
       phone: "Telefon",
-      phoneValue: "077 214 66 55",
+      phoneValue: "079 404 09 99",
       email: "E-Mail",
       emailValue: "info@limmobilien-gmbh.ch",
       hours: "Öffnungszeiten",

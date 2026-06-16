@@ -30,7 +30,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
             <div className="leading-relaxed text-center" style={{ color: "#c49e57" }}>
               <a href="mailto:qlirim.ademi@limmobilien-gmbh.ch" className="hover:text-[#c49e57] transition-colors">qlirim.ademi@limmobilien-gmbh.ch</a>
               <br />
-              <a href="tel:+41772146655" className="hover:text-[#c49e57] transition-colors">077 214 66 55</a>
+              <a href="tel:+41794040999" className="hover:text-[#c49e57] transition-colors">079 404 09 99</a>
             </div>
           </div>
         </div>
